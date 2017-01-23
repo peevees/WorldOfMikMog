@@ -19,6 +19,7 @@ import android.view.SurfaceHolder;
 public class GameEngine extends AppCompatActivity {
 
     GameView gameView;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class GameEngine extends AppCompatActivity {
         gameView = new GameView(this);
         setContentView(gameView);
     }
+
     class GameView extends SurfaceView implements Runnable {
 
         Thread gameThread = null;
@@ -79,8 +81,50 @@ public class GameEngine extends AppCompatActivity {
                 }
             }
         }
+
+
+        public void update() {
+
+            if (isMoving) {
+                bobXPosition = bobXPosition + (walkSpeedPerSecond / fps);
+
+            }
+        }
+
+        public void draw() {
+
+            if (ourHolder.getSurface().isValid()) {
+
+                canvas = ourHolder.lockCanvas();
+
+                canvas.drawColor(Color.argb(255, 26, 128, 182));
+
+                paint.setColor(Color.argb(255, 249, 129, 0));
+
+                paint.setTextSize(45);
+
+                canvas.drawText("FPS:" + fps, 20, 40, paint);
+
+                canvas.drawBitmapBob(bitmapBob, BobxPosition, 200, paint);
+
+                ourHolder.unlockCanvasAndPost(canvas);
+            }
+        }
+
+        public void pause() {
+            playing = false;
+            try {
+                gameThread.join();
+            } catch (InterruptedException e) {
+                Log.e("Error:", "joining thread");
+            }
+        }
+        public void resume() {
+            playing = true;
+            gameThread = new Thread(this);
+            gameThread.start();
+        }
     }
 
-
-
 }
+
