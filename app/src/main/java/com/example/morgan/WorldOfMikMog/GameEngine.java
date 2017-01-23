@@ -105,7 +105,7 @@ public class GameEngine extends AppCompatActivity {
 
                 canvas.drawText("FPS:" + fps, 20, 40, paint);
 
-                canvas.drawBitmapBob(bitmapBob, BobxPosition, 200, paint);
+                canvas.drawBitmapBob(bitmapBob, BobXPosition, 200, paint);
 
                 ourHolder.unlockCanvasAndPost(canvas);
             }
@@ -123,6 +123,25 @@ public class GameEngine extends AppCompatActivity {
             playing = true;
             gameThread = new Thread(this);
             gameThread.start();
+        }
+
+        @Override public boolean onTouchEvent(MotionEvent motionEvent) {
+
+            switch (motionEvent.getAction() &  motionEvent.ACTION_MASK) {
+
+                case MotionEvent.ACTION_DOWN:
+
+                isMoving = true;
+
+                break;
+
+                case MotionEvent.ACTION_UP:
+
+                    isMoving = false;
+
+                    break;
+            }
+            return true;
         }
     }
 
