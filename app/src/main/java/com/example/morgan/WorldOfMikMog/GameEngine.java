@@ -51,5 +51,36 @@ public class GameEngine extends AppCompatActivity {
 
         float bobXPosition = 10;
 
+
+        public GameView(Context context) {
+
+            super(context);
+
+            ourHolder = getHolder();
+            paint = new Paint();
+
+            bitmapBob = BitmapFactory.decodeResource(this.getResources(), R.drawable.bob);
+
+        }
+
+        @Override
+        public void run() {
+            while (playing) {
+
+                long startFrameTime = System.currentTimeMillis();
+
+                update();
+
+                draw();
+
+                timeThisFrame = System.currentTimeMillis() - startFrameTime;
+                if (timeThisFrame > 0) {
+                    fps = 1000 / timeThisFrame;
+                }
+            }
+        }
     }
+
+
+
 }
