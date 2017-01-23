@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Down"
+        android:onClick="downClick"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/up"
         android:layout_alignStart="@+id/up" />
@@ -25,13 +26,14 @@
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:id="@+id/textView3" />
+        android:id="@+id/textView1" />
 
     <Button
         android:id="@+id/left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Left"
+        android:onClick="leftClick"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/down"
         android:layout_toStartOf="@+id/down"
@@ -43,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Right"
+        android:onClick="rightClick"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/down"
         android:layout_toEndOf="@+id/down"
@@ -54,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Up"
+        android:onClick="upClick"
         android:layout_above="@+id/down"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp" />
