@@ -16,6 +16,8 @@ public class Main extends AppCompatActivity {
     private ImageView player;
     private TextView direction;
 
+    //hej
+
     //size
     private int playerHeight;
     private int playerWidth;
