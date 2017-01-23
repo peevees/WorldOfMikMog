@@ -8,7 +8,7 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);// herregud
-        //hur funkar detta?
+        setContentView(R.layout.activity_main);
+        //test to see if it updates the repository
     }
 }
