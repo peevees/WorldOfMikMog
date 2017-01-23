@@ -17,7 +17,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content
         android:text="Hello World!"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -57,4 +57,5 @@
         android:layout_above="@+id/down"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp" />
+
 </RelativeLayout>
