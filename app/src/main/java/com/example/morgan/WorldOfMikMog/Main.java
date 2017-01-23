@@ -19,23 +19,23 @@ public class Main extends AppCompatActivity {
     // /better to assign method to xml layout
     public void leftClick(View view){
         //something happens
-        Log.d("myTag", "it went left");
+        Log.d("left", "it went left");
         TextView textView = (TextView)findViewById(R.id.textView1);
         textView.setText("Went left");
 
     }
-    public void rightClick(){
-        Log.d("myTag", "it went right");
+    public void rightClick(View view){
+        Log.d("right", "it went right");
         TextView textView = (TextView)findViewById(R.id.textView1);
         textView.setText("Went right");
     }
-    public void upClick(){
-        Log.d("myTag", "it went up");
+    public void upClick(View view){
+        Log.d("up", "it went up");
         TextView textView = (TextView)findViewById(R.id.textView1);
         textView.setText("Went up");
     }
-    public void downClick(){
-        Log.d("myTag", "it went down");
+    public void downClick(View view){
+        Log.d("down", "it went down");
         TextView textView = (TextView)findViewById(R.id.textView1);
         textView.setText("Went down");
     }
