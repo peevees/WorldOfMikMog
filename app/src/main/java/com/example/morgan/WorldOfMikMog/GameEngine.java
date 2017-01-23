@@ -12,7 +12,8 @@ import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.util.Log;
         import android.view.MotionEvent;
-        import android.view.SurfaceHolder;
+import android.view.Surface;
+import android.view.SurfaceHolder;
         import android.view.SurfaceView;
 
 public class GameEngine extends AppCompatActivity {
@@ -26,5 +27,29 @@ public class GameEngine extends AppCompatActivity {
         gameView = new GameView(this);
         setContentView(gameView);
     }
+    class GameView extends SurfaceView implements Runnable {
 
+        Thread gameThread = null;
+
+        SurfaceHolder ourHolder;
+
+        volatile boolean playing;
+
+        Canvas canvas;
+        Paint paint;
+
+        Long fps;
+
+        private Long timeThisFrame;
+
+        Bitmap bitmapBob;
+
+
+        Boolean isMoving = false;
+
+        float walkSpeedPerSecond = 150;
+
+        float bobXPosition = 10;
+
+    }
 }
