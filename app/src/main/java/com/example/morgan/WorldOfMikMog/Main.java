@@ -61,8 +61,8 @@ public class Main extends AppCompatActivity {
         //something happens
         Log.d("left", "it went left");
         direction.setText("Went left");
-        //((ViewGroup.MarginLayoutParams)player.getLayoutParams()).leftMargin-=20;
-        //player.requestLayout();
+        ((ViewGroup.MarginLayoutParams)player.getLayoutParams()).leftMargin-=20;
+        player.requestLayout();
 
 
         player.getLocationOnScreen(position);
