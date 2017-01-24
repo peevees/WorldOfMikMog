@@ -43,8 +43,6 @@ public class Main extends AppCompatActivity {
         playerHeight = player.getHeight();
         playerWidth = player.getWidth();
 
-
-
         //get screen size
         WindowManager wm = getWindowManager();
         Display disp = wm.getDefaultDisplay();
