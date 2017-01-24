@@ -22,9 +22,11 @@
         android:layout_height="wrap_content"
         android:text="Down"
         android:onClick="downClick"
-        android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/up"
-        android:layout_alignStart="@+id/up" />
+        android:layout_alignStart="@+id/up"
+        android:layout_alignRight="@+id/up"
+        android:layout_alignEnd="@+id/up"
+        android:layout_alignParentBottom="true" />
 
     <Button
         android:id="@+id/left"
@@ -33,10 +35,10 @@
         android:text="Left"
         android:onClick="leftClick"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:elevation="0dp"
         android:layout_toLeftOf="@+id/down"
-        android:layout_toStartOf="@+id/down"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp" />
+        android:layout_toStartOf="@+id/down" />
 
     <Button
         android:id="@+id/right"
@@ -45,10 +47,9 @@
         android:text="Right"
         android:onClick="rightClick"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/down"
-        android:layout_toEndOf="@+id/down"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp" />
+        android:layout_toEndOf="@+id/up"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@+id/up" />
 
     <Button
         android:id="@+id/up"
@@ -56,14 +57,16 @@
         android:layout_height="wrap_content"
         android:text="Up"
         android:onClick="upClick"
-        android:layout_above="@+id/down"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_above="@+id/down" />
 
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
 
         <ImageView
