@@ -1,7 +1,6 @@
 package com.example.morgan.WorldOfMikMog;
 
 import android.graphics.Point;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,16 +11,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-//TODO change walking code, add animation,
 public class Main extends AppCompatActivity {
 
     private ImageView player;
     private TextView direction;
 
-    //Sounds and music
-    private SoundPlayer sound;
-    private MediaPlayer music;
+    //hej
 
     //size
     private int playerHeight;
@@ -48,14 +43,6 @@ public class Main extends AppCompatActivity {
         playerHeight = player.getHeight();
         playerWidth = player.getWidth();
 
-        //ljud
-        sound = new SoundPlayer(this);
-        music = new MediaPlayer();
-        music = MediaPlayer.create(this, R.raw.success);//TODO change sound depending on location
-        music.start();
-        music.setVolume(0.1f, 0.1f);
-        music.setLooping(true);
-
         //get screen size
         WindowManager wm = getWindowManager();
         Display disp = wm.getDefaultDisplay();
@@ -71,7 +58,6 @@ public class Main extends AppCompatActivity {
     }
 
     public void leftClick(View view){
-        sound.playWalkSound();
         //something happens
         Log.d("left", "it went left");
         direction.setText("Went left");
@@ -84,8 +70,7 @@ public class Main extends AppCompatActivity {
         Log.d("postion", String.valueOf(position[1]));
     }
     public void rightClick(View view){
-        sound.playWalkSound();
-        Log.d("right", "it went right");
+        Log.d("right", "It went right");
         direction.setText("Went right");
         ((ViewGroup.MarginLayoutParams)player.getLayoutParams()).leftMargin+=20;
         player.requestLayout();
@@ -95,9 +80,6 @@ public class Main extends AppCompatActivity {
         Log.d("postion", String.valueOf(position[1]));
     }
     public void upClick(View view){
-        Log.d("TEST", "Innan ljud");
-        sound.playWalkSound();
-        Log.d("TEST", "efter ljud");
         Log.d("up", "it went up");
         direction.setText("Went up");
         ((ViewGroup.MarginLayoutParams)player.getLayoutParams()).topMargin-=20;
@@ -108,7 +90,6 @@ public class Main extends AppCompatActivity {
         Log.d("postion", String.valueOf(position[1]));
     }
     public void downClick(View view){
-        sound.playWalkSound();
         Log.d("down", "it went down");
         direction.setText("Went down");
         ((ViewGroup.MarginLayoutParams)player.getLayoutParams()).topMargin+=20;
