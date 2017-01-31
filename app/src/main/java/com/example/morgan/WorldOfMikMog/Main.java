@@ -71,6 +71,7 @@ public class Main extends AppCompatActivity {
     }
 
     public void leftClick(View view){
+        sound.playWalkSound();
         //something happens
         Log.d("left", "it went left");
         direction.setText("Went left");
@@ -83,6 +84,7 @@ public class Main extends AppCompatActivity {
         Log.d("postion", String.valueOf(position[1]));
     }
     public void rightClick(View view){
+        sound.playWalkSound();
         Log.d("right", "it went right");
         direction.setText("Went right");
         ((ViewGroup.MarginLayoutParams)player.getLayoutParams()).leftMargin+=20;
