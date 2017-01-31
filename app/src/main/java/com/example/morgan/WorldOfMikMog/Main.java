@@ -63,8 +63,8 @@ public class Main extends AppCompatActivity {
         disp.getSize(size);
 
         player.getLocationOnScreen(position);
-        Log.d("postion", String.valueOf(position[0]));
-        Log.d("postion", String.valueOf(position[1]));
+        Log.d("position", String.valueOf(position[0]));
+        Log.d("position", String.valueOf(position[1]));
         screenWidth = size.x;
         screenHeight = size.y;
 
@@ -79,8 +79,8 @@ public class Main extends AppCompatActivity {
 
 
         player.getLocationOnScreen(position);
-        Log.d("postion", String.valueOf(position[0]));
-        Log.d("postion", String.valueOf(position[1]));
+        Log.d("position", String.valueOf(position[0]));
+        Log.d("position", String.valueOf(position[1]));
     }
     public void rightClick(View view){
         Log.d("right", "It went right");
@@ -89,8 +89,8 @@ public class Main extends AppCompatActivity {
         player.requestLayout();
 
         player.getLocationOnScreen(position);
-        Log.d("postion", String.valueOf(position[0]));
-        Log.d("postion", String.valueOf(position[1]));
+        Log.d("position", String.valueOf(position[0]));
+        Log.d("position", String.valueOf(position[1]));
     }
     public void upClick(View view){
         Log.d("TEST", "Innan ljud");
@@ -102,8 +102,8 @@ public class Main extends AppCompatActivity {
         player.requestLayout();
 
         player.getLocationOnScreen(position);
-        Log.d("postion", String.valueOf(position[0]));
-        Log.d("postion", String.valueOf(position[1]));
+        Log.d("position", String.valueOf(position[0]));
+        Log.d("position", String.valueOf(position[1]));
     }
     public void downClick(View view){
         sound.playWalkSound();
@@ -113,8 +113,8 @@ public class Main extends AppCompatActivity {
         player.requestLayout();
 
         player.getLocationOnScreen(position);
-        Log.d("postion", String.valueOf(position[0]));
-        Log.d("postion", String.valueOf(position[1]));
+        Log.d("position", String.valueOf(position[0]));
+        Log.d("position", String.valueOf(position[1]));
     }
 
     //change position
