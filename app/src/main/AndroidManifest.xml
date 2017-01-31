@@ -8,11 +8,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".splashScreen"
+        <activity
+            android:name=".splashScreen"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"><!--this removes the app action bar-->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"> <!-- this removes the app action bar -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -20,7 +22,8 @@
             android:name=".Main"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".GameEngine"></activity>
+        <activity android:name=".GameEngine" />
+        <activity android:name=".SpriteSheet"></activity>
     </application>
 
 </manifest>
