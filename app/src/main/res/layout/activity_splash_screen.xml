@@ -6,15 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.morgan.WorldOfMikMog.splashScreen"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background = "@drawable/background">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MikMog Studios Presents:"
-        android:textSize="20sp"
-        android:textColor="#ffa64d"/>
+        android:textSize="30sp"
+        android:textColor="#005c99"/>
 
     <TableLayout
         android:gravity="center_vertical"
@@ -35,4 +36,9 @@
         android:layout_marginTop="10dp"
         android:onClick="startGame"/>
 
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Options"
+        />
 </LinearLayout>
