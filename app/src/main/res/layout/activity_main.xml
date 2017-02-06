@@ -7,14 +7,14 @@
     tools:context="com.example.morgan.WorldOfMikMog.Main">
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:layout_centerInParent="true"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/textView1" />
+        android:layout_marginTop="30dp"/>
 
     <Button
         android:id="@+id/down"
@@ -63,17 +63,7 @@
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-
-        <ImageView
-            android:id="@+id/player"
-            android:layout_width="28dp"
-            android:layout_height="43dp"
-            android:src="@drawable/bob"/>
+        android:layout_height="match_parent">
 
     </FrameLayout>
 

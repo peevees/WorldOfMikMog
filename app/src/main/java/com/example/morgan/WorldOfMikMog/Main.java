@@ -19,17 +19,19 @@ import android.widget.TextView;
 //TODO change walking code, add animation,
 public class Main extends AppCompatActivity {
 
-    private ImageView player;
+    //gesture detector
     private GestureDetectorCompat detector;
+    //textview
     private TextView direction;
 
     //Sounds and music
     private SoundPlayer sound;
     private MediaPlayer music;
 
+    //player
+    private Player player;
+
     //size
-    private int playerHeight;
-    private int playerWidth;
     private int screenWidth;
     private int screenHeight;
 
@@ -53,12 +55,8 @@ private Context context;
 
         //test to see if it updates the repository
         direction = (TextView) findViewById(R.id.textView1);
-        player = (ImageView) findViewById(R.id.player);
-        playerHeight = player.getHeight();
-        playerWidth = player.getWidth();
 
-
-        //ljud
+        //sound
         sound = new SoundPlayer(this);
         music = new MediaPlayer();
         music = MediaPlayer.create(this, R.raw.success);//TODO change sound depending on location
@@ -71,63 +69,9 @@ private Context context;
         Display disp = wm.getDefaultDisplay();
         Point size = new Point();
         disp.getSize(size);
-
-        player.getLocationOnScreen(position);
-        Log.d("position", String.valueOf(position[0]));
-        Log.d("position", String.valueOf(position[1]));
         screenWidth = size.x;
         screenHeight = size.y;
 
-    }
-
-    public void leftClick(View view) {
-        //something happens
-        Log.d("left", "it went left");
-        direction.setText("Went left");
-        ((ViewGroup.MarginLayoutParams) player.getLayoutParams()).leftMargin -= 20;
-        player.requestLayout();
-
-
-        player.getLocationOnScreen(position);
-        Log.d("position", String.valueOf(position[0]));
-        Log.d("position", String.valueOf(position[1]));
-    }
-
-    public void rightClick(View view) {
-        Log.d("right", "It went right");
-        direction.setText("Went right");
-        ((ViewGroup.MarginLayoutParams) player.getLayoutParams()).leftMargin += 20;
-        player.requestLayout();
-
-        player.getLocationOnScreen(position);
-        Log.d("position", String.valueOf(position[0]));
-        Log.d("position", String.valueOf(position[1]));
-    }
-
-    public void upClick(View view) {
-        Log.d("TEST", "Innan ljud");
-        sound.playWalkSound();
-        Log.d("TEST", "efter ljud");
-        Log.d("up", "it went up");
-        direction.setText("Went up");
-        ((ViewGroup.MarginLayoutParams) player.getLayoutParams()).topMargin -= 20;
-        player.requestLayout();
-
-        player.getLocationOnScreen(position);
-        Log.d("position", String.valueOf(position[0]));
-        Log.d("position", String.valueOf(position[1]));
-    }
-
-    public void downClick(View view) {
-        sound.playWalkSound();
-        Log.d("down", "it went down");
-        direction.setText("Went down");
-        ((ViewGroup.MarginLayoutParams) player.getLayoutParams()).topMargin += 20;
-        player.requestLayout();
-
-        player.getLocationOnScreen(position);
-        Log.d("position", String.valueOf(position[0]));
-        Log.d("position", String.valueOf(position[1]));
     }
 
     //change position
