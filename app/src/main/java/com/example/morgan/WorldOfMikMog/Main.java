@@ -44,18 +44,18 @@ public class Main extends AppCompatActivity {
     private int playerSpeed;
 
 private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //detector
         detector = new GestureDetectorCompat(context, onSwipeListener);
-
-
 
         //test to see if it updates the repository
         direction = (TextView) findViewById(R.id.textView1);
-
+        World world = new World(this);
         //sound
         sound = new SoundPlayer(this);
         music = new MediaPlayer();
