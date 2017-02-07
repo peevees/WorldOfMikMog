@@ -14,7 +14,7 @@
         <GridLayout
             android:id="@+id/grid"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"><!-- TODO kontrollera hur många rader och kolumner -->
 
             <ImageView
                 android:id="@+id/imageView"

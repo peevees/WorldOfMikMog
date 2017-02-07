@@ -101,15 +101,23 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
     public void printWorld(){
 
         pxtodp();
-        ImageView myImageView = new ImageView(this);
-        myImageView.setImageResource(R.drawable.grass);
+        ImageView myImageView;
 
-
-        GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
-        myImageView.setLayoutParams(gridParams);
-        for(int i = 0; i < 10; i ++){//TODO fix the crashing here
+
+
+
+        for(int i = 0; i < 15; i ++){//TODO fix the crashing here
+            myImageView = new ImageView(this);
+            myImageView.setImageResource(R.drawable.grass);
+
+
+            GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
+            myImageView.setLayoutParams(gridParams);
+
+
+
             gridLayout.addView(myImageView);
             myImageView.getLayoutParams().height = dpHeightInPx;
             myImageView.getLayoutParams().width = dpWidthInPx;
