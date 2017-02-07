@@ -109,7 +109,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
         myImageView.setLayoutParams(gridParams);
-        for(int i = 0; i < 10; i ++){
+        for(int i = 0; i < 10; i ++){//TODO fix the crashing here
             gridLayout.addView(myImageView);
             myImageView.getLayoutParams().height = dpHeightInPx;
             myImageView.getLayoutParams().width = dpWidthInPx;
