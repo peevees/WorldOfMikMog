@@ -28,6 +28,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
 
     //ImageViews
+    private ImageView[][] Cell;
     private ImageView player;
 
     //Size
@@ -54,11 +55,9 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        player = (ImageView) findViewById(R.id.player);
-
         //detector
         detector = new GestureDetectorCompat(this, onSwipeListener);
-        player.setOnTouchListener(this);
+        //player.setOnTouchListener(this);
 
         //music & sound
         sound = new SoundPlayer(this);
@@ -68,19 +67,13 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         music.setVolume(0.1f, 0.1f);
         music.setLooping(true);
 
-        //get screen size
-        WindowManager wm = getWindowManager();
-        Display disp = wm.getDefaultDisplay();
-        Point size = new Point();
-        disp.getSize(size);
-        screenWidth = size.x;
-        screenHeight = size.y;
-
         //speed
         playerSpeed = Math.round(screenHeight / 60F);
 
-        world();
-        player();
+        createWorld();
+        printWorld();
+
+        //player();
 
     }
     public void pxtodp(){
@@ -105,7 +98,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
 
     }
-    public void world(){
+    public void printWorld(){
 
         pxtodp();
         ImageView myImageView = new ImageView(this);
@@ -116,12 +109,27 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
         myImageView.setLayoutParams(gridParams);
-        gridLayout.addView(myImageView);
-        myImageView.getLayoutParams().height = dpHeightInPx;
-        myImageView.getLayoutParams().width = dpWidthInPx;
-        myImageView.requestLayout();
+        for(int i = 0; i < 10; i ++){
+            gridLayout.addView(myImageView);
+            myImageView.getLayoutParams().height = dpHeightInPx;
+            myImageView.getLayoutParams().width = dpWidthInPx;
+            myImageView.requestLayout();
+        }
+    }
+    public void createWorld(){
 
+        //get screen size
+        WindowManager wm = getWindowManager();
+        Display disp = wm.getDefaultDisplay();
+        Point size = new Point();
+        disp.getSize(size);
+        screenWidth = size.x;
+        screenHeight = size.y;
 
+        Log.d("screenWidth", "screen width is : " + screenWidth);
+        Log.d("screenHeight", "screen height is : " + screenHeight);
+
+        //Cell = new ImageView[][]
     }
     /*
     //change position
