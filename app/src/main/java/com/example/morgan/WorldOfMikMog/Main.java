@@ -92,6 +92,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
     public void player(){
         pxtodp();
         ImageView player = new ImageView(this);
+
         player.setImageResource(R.drawable.bob);
 
         FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams();
@@ -108,18 +109,18 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
     public void world(){
 
         pxtodp();
-        ImageView myimageView = new ImageView(this);
-        myimageView.setImageResource(R.drawable.grass);
+        ImageView myImageView = new ImageView(this);
+        myImageView.setImageResource(R.drawable.grass);
 
 
         GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
-        myimageView.setLayoutParams(gridParams);
-        gridLayout.addView(myimageView);
-        myimageView.getLayoutParams().height = dpHeightInPx;
-        myimageView.getLayoutParams().width = dpWidthInPx;
-        myimageView.requestLayout();
+        myImageView.setLayoutParams(gridParams);
+        gridLayout.addView(myImageView);
+        myImageView.getLayoutParams().height = dpHeightInPx;
+        myImageView.getLayoutParams().width = dpWidthInPx;
+        myImageView.requestLayout();
 
 
     }
