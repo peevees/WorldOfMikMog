@@ -90,17 +90,17 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
     }
     public void player(){
+
         pxtodp();
         ImageView player = new ImageView(this);
         player.setImageResource(R.drawable.bob);
 
-        FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams();
+        FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(dpWidthInPx ,dpHeightInPx );
 
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame);
         player.setLayoutParams(playerParams);
         frameLayout.addView(player);
-        player.getLayoutParams().height = dpHeightInPx;
-        player.getLayoutParams().width = dpWidthInPx;
+
         player.requestLayout();
 
 
