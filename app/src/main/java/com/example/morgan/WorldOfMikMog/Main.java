@@ -12,15 +12,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
 //TODO change walking code, add animation,
-public class Main extends AppCompatActivity {
+public class Main extends AppCompatActivity implements View.OnTouchListener {
 
     //gesture detector
     private GestureDetectorCompat detector;
+
     //textview
     private TextView direction;
 
@@ -29,9 +31,10 @@ public class Main extends AppCompatActivity {
     private MediaPlayer music;
 
     //player
-    private Player player;
+    private ImageView player;
+    //private Player player;
 
-    //size
+    //screen size
     private int screenWidth;
     private int screenHeight;
 
@@ -43,19 +46,27 @@ public class Main extends AppCompatActivity {
     //speed
     private int playerSpeed;
 
-private Context context;
+    private FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        detector = new GestureDetectorCompat(this, onSwipeListener);
+
+        player = (ImageView) findViewById(R.id.player);
+        frameLayout = (FrameLayout) findViewById(R.id.frame);
+
         //detector
-        detector = new GestureDetectorCompat(context, onSwipeListener);
+        player.setOnTouchListener(this);
+
+
 
         //test to see if it updates the repository
         direction = (TextView) findViewById(R.id.textView1);
-        World world = new World(this);
+        //World world = new World(this);
+
         //sound
         sound = new SoundPlayer(this);
         music = new MediaPlayer();
@@ -78,6 +89,7 @@ private Context context;
     public void changePos() {
 
     }
+    @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         return detector.onTouchEvent(motionEvent);
     }

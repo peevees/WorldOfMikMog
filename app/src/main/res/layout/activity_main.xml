@@ -76,6 +76,11 @@
 
                 android:id="@+id/imageView" />
         </GridLayout>
+        <ImageView
+            android:id="@+id/player"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/bob"/>
 
     </FrameLayout>
 

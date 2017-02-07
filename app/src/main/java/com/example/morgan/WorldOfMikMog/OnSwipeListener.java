@@ -1,5 +1,6 @@
 package com.example.morgan.WorldOfMikMog;
 
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
@@ -99,9 +100,11 @@ public class OnSwipeListener extends GestureDetector.SimpleOnGestureListener {
          */
         public static Direction get(double angle){
             if(inRange(angle, 45, 135)){
+                Log.d("UP", "swipe up");
                 return Direction.up;
             }
             else if(inRange(angle, 0,45) || inRange(angle, 315, 360)){
+                Log.d("DOWN", "swipe DOWN");
                 return Direction.right;
             }
             else if(inRange(angle, 225, 315)){
