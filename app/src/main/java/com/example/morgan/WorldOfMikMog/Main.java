@@ -98,7 +98,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame);
         player.setLayoutParams(playerParams);
-        FrameLayout.addView(player);
+        frameLayout.addView(player);
         player.getLayoutParams().height = dpHeightInPx;
         player.getLayoutParams().width = dpWidthInPx;
         player.requestLayout();
