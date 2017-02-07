@@ -6,76 +6,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.morgan.WorldOfMikMog.Main">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"/>
-
-    <Button
-        android:id="@+id/down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Down"
-        android:onClick="downClick"
-        android:layout_alignLeft="@+id/up"
-        android:layout_alignStart="@+id/up"
-        android:layout_alignRight="@+id/up"
-        android:layout_alignEnd="@+id/up"
-        android:layout_alignParentBottom="true" />
-
-    <Button
-        android:id="@+id/left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Left"
-        android:onClick="leftClick"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:elevation="0dp"
-        android:layout_toLeftOf="@+id/down"
-        android:layout_toStartOf="@+id/down" />
-
-    <Button
-        android:id="@+id/right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Right"
-        android:onClick="rightClick"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/up"
-        android:layout_marginBottom="20dp"
-        android:layout_toRightOf="@+id/up" />
-
-    <Button
-        android:id="@+id/up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Up"
-        android:onClick="upClick"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/down" />
-
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <GridLayout
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/grass"
+                android:src="@drawable/grass"/>
 
-                android:id="@+id/imageView" />
         </GridLayout>
+
         <ImageView
             android:id="@+id/player"
             android:layout_width="50dp"

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,51 +24,43 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
     //gesture detector
     private GestureDetectorCompat detector;
 
-    //textview
-    private TextView direction;
+    //TextViews
+
+
+    //ImageViews
+    private ImageView player;
+
+    //Size
+    private int frameHeight;
+    private int playerSize;
+    private int screenWidth;
+    private int screenHeight;
+    private int dpWidthInPx;
+    private int dpHeightInPx;
+
+    //postion
+    private int playerY;
+    private int playerX;
+
+    //Speed
+    private int playerSpeed;
 
     //Sounds and music
     private SoundPlayer sound;
     private MediaPlayer music;
-
-    //player
-    private ImageView player;
-    //private Player player;
-
-    //screen size
-    private int screenWidth;
-    private int screenHeight;
-
-    //position
-    private int playerX;
-    private int PlayerY;
-    private int[] position = new int[2];
-
-    //speed
-    private int playerSpeed;
-
-    private FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        detector = new GestureDetectorCompat(this, onSwipeListener);
-
         player = (ImageView) findViewById(R.id.player);
-        frameLayout = (FrameLayout) findViewById(R.id.frame);
 
         //detector
+        detector = new GestureDetectorCompat(this, onSwipeListener);
         player.setOnTouchListener(this);
 
-
-
-        //test to see if it updates the repository
-        direction = (TextView) findViewById(R.id.textView1);
-        //World world = new World(this);
-
-        //sound
+        //music & sound
         sound = new SoundPlayer(this);
         music = new MediaPlayer();
         music = MediaPlayer.create(this, R.raw.success);//TODO change sound depending on location
@@ -83,12 +76,82 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         screenWidth = size.x;
         screenHeight = size.y;
 
-    }
+        //speed
+        playerSpeed = Math.round(screenHeight / 60F);
 
+        world();
+        player();
+
+    }
+    public void pxtodp(){
+        final float scale = getResources().getDisplayMetrics().density;
+        dpWidthInPx  = (int) (50 * scale);
+        dpHeightInPx = (int) (50 * scale);
+
+    }
+    public void player(){
+        pxtodp();
+        ImageView player = new ImageView(this);
+        player.setImageResource(R.drawable.bob);
+
+        FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams();
+
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame);
+        player.setLayoutParams(playerParams);
+        FrameLayout.addView(player);
+        player.getLayoutParams().height = dpHeightInPx;
+        player.getLayoutParams().width = dpWidthInPx;
+        player.requestLayout();
+
+
+    }
+    public void world(){
+
+        pxtodp();
+        ImageView myimageView = new ImageView(this);
+        myimageView.setImageResource(R.drawable.grass);
+
+
+        GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
+
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
+        myimageView.setLayoutParams(gridParams);
+        gridLayout.addView(myimageView);
+        myimageView.getLayoutParams().height = dpHeightInPx;
+        myimageView.getLayoutParams().width = dpWidthInPx;
+        myimageView.requestLayout();
+
+
+    }
+    /*
     //change position
     public void changePos() {
 
+        //move player
+        switch (direction){
+            case left:
+                playerX -= playerSpeed;
+                break;
+            case right:
+                playerX += playerSpeed;
+                break;
+            case up:
+                playerY += playerSpeed;
+                break;
+            case down:
+                playerX -= playerSpeed;
+                break;
+            default:
+                playerX = playerX;
+                break;
+        }
+
+        //Check player position//TODO check player to stay inside frame and against objects
+
     }
+    */
+
+
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         return detector.onTouchEvent(motionEvent);
@@ -101,16 +164,21 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
             // Possible implementation
             if(direction == Direction.left|| direction == Direction.right) {
+                Log.d("LEFTRIGHT", "left or right swipe");
+                playerX -= playerSpeed;
                 // Do something COOL like animation or whatever you want
                 // Refer to your view if needed using a global reference
                 return true;
             }
             else if(direction == Direction.up|| direction == Direction.down) {
+                Log.d("DOWNUP", "up or down swipe");
+                playerY -= playerSpeed;
                 // Do something COOL like animation or whatever you want
                 // Refer to your view if needed using a global reference
                 return true;
             }
-
             return super.onSwipe(direction);
         }
-};}
+    };
+
+}
