@@ -77,6 +77,8 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         //speed
         playerSpeed = Math.round(screenHeight / 60F);
 
+        GridLayout swipeControl = (GridLayout) findViewById(R.id.grid);
+        swipeControl.setOnTouchListener(this);
 
         createWorld();
         printWorld();
@@ -85,6 +87,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame);
         frameLayout.setOnTouchListener(this);
         player();
+
 
     }
     public void pictureSize(){
@@ -105,7 +108,6 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         player.setImageResource(R.drawable.bob);
         player.setId(R.id.player);
         FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(pictureWidth ,pictureHeight );
-
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.activity_main);
         frameLayout.invalidate();
         player.setLayoutParams(playerParams);
