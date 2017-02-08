@@ -77,16 +77,14 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         //speed
         playerSpeed = Math.round(screenHeight / 60F);
 
-        GridLayout swipeControl = (GridLayout) findViewById(R.id.grid);
-        swipeControl.setOnTouchListener(this);
+
 
         createWorld();
         printWorld();
-
-        //player();
-        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame);
-        frameLayout.setOnTouchListener(this);
         player();
+
+        GridLayout swipeControl = (GridLayout) findViewById(R.id.grid);
+        swipeControl.setOnTouchListener(this);
 
 
     }
