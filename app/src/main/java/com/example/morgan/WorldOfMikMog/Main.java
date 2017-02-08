@@ -80,6 +80,10 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
         createWorld();
         printWorld();
+
+        //player();
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame);
+        frameLayout.setOnTouchListener(this);
         player();
 
     }
