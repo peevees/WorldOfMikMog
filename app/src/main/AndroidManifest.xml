@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name=".Main"
-            android:screenOrientation="portrait"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".GameEngine" />
         <activity android:name=".SpriteSheet"></activity>

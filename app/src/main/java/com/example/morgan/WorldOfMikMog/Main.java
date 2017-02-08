@@ -1,6 +1,5 @@
 package com.example.morgan.WorldOfMikMog;
 
-import android.content.Context;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.support.v4.view.GestureDetectorCompat;
@@ -8,14 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 
 //TODO change walking code, add animation,
@@ -32,12 +30,12 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
     private ImageView player;
 
     //Size
-    private int frameHeight;
-    private int playerSize;
     private int screenWidth;
     private int screenHeight;
-    private int dpWidthInPx;
-    private int dpHeightInPx;
+    private int rowCount = 6;
+    private int columnCount = 15;
+    private int pictureWidth;
+    private int pictureHeight;
 
     //postion
     private int playerY;
@@ -55,6 +53,15 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //set immersive mode
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
         //detector
         detector = new GestureDetectorCompat(this, onSwipeListener);
         //player.setOnTouchListener(this);
@@ -70,27 +77,33 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         //speed
         playerSpeed = Math.round(screenHeight / 60F);
 
+
         createWorld();
         printWorld();
-
-        //player();
+        player();
 
     }
-    public void pxtodp(){
-        final float scale = getResources().getDisplayMetrics().density;
-        dpWidthInPx  = (int) (50 * scale);
-        dpHeightInPx = (int) (50 * scale);
+    public void pictureSize(){
+        pictureWidth = screenWidth / columnCount;
+        pictureHeight = screenWidth / columnCount;
+        Log.d("Picture_width", "the width of the picture is " + pictureWidth);
 
+        /*pxtodp
+        final float scale = getResources().getDisplayMetrics().density;
+        dpWidthInPx  = (int) (pictureWidth * scale);//TODO make size of pictures depending on size of screen
+        dpHeightInPx = (int) (pictureHeight * scale);
+        */
     }
     public void player(){
 
-        pxtodp();
+        pictureSize();
         ImageView player = new ImageView(this);
         player.setImageResource(R.drawable.bob);
 
-        FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(dpWidthInPx ,dpHeightInPx );
+        FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(pictureWidth ,pictureHeight );
 
-        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame);
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.activity_main);
+        frameLayout.invalidate();
         player.setLayoutParams(playerParams);
         frameLayout.addView(player);
 
@@ -98,29 +111,28 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
 
     }
-    public void printWorld(){
+    public void printWorld(){//TODO make dependent on screensize
 
-        pxtodp();
+        pictureSize();
         ImageView myImageView;
 
-
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
+        gridLayout.invalidate();
+        gridLayout.setColumnCount(columnCount);
+        gridLayout.setRowCount(rowCount);
 
-
-
-        for(int i = 0; i < 15; i ++){//TODO fix the crashing here
+        for(int i = 0; i < (columnCount*rowCount); i ++){
             myImageView = new ImageView(this);
-            myImageView.setImageResource(R.drawable.grass);
+            myImageView.setImageResource(R.drawable.grassdb);
 
 
             GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
+
             myImageView.setLayoutParams(gridParams);
 
-
-
             gridLayout.addView(myImageView);
-            myImageView.getLayoutParams().height = dpHeightInPx;
-            myImageView.getLayoutParams().width = dpWidthInPx;
+            myImageView.getLayoutParams().height = pictureHeight;//dpHeightInPx;
+            myImageView.getLayoutParams().width = pictureWidth;
             myImageView.requestLayout();
         }
     }
@@ -166,6 +178,19 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
     }
     */
+
+    //disable return button
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event){
+        if(event.getAction() == KeyEvent.ACTION_DOWN){
+            switch (event.getKeyCode()){
+                case KeyEvent.KEYCODE_BACK:
+                    return true;
+            }
+        }
+
+        return super.dispatchKeyEvent(event);
+    }
 
 
     @Override
