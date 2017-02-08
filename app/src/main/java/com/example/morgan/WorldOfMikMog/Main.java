@@ -106,6 +106,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         player.setImageResource(R.drawable.bob);
         player.setId(R.id.player);
         FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(pictureWidth ,pictureHeight );
+
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.activity_main);
         frameLayout.invalidate();
         player.setLayoutParams(playerParams);
