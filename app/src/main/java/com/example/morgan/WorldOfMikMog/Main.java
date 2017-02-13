@@ -32,7 +32,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
     //Size
     private int screenWidth;
     private int screenHeight;
-    private int rowCount = 6;
+    private int rowCount = 10;
     private int columnCount = 15;
     private int pictureWidth;
     private int pictureHeight;
@@ -83,15 +83,28 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         printWorld();
         player();
 
+        PlayerView playerView = new PlayerView(this);
+
         GridLayout swipeControl = (GridLayout) findViewById(R.id.grid);
         swipeControl.setOnTouchListener(this);
 
 
     }
     public void pictureSize(){
+
+
+        //get screen size
+        WindowManager wm = getWindowManager();
+        Display disp = wm.getDefaultDisplay();
+        Point size = new Point();
+        disp.getSize(size);
+        screenWidth = size.x;
+        screenHeight = size.y;
+
         pictureWidth = screenWidth / columnCount;
-        pictureHeight = screenWidth / columnCount;
+        pictureHeight = screenHeight / rowCount;
         Log.d("Picture_width", "the width of the picture is " + pictureWidth);
+        Log.d("Picture_height", "the height of the picture is " + pictureHeight);
 
         /*pxtodp
         final float scale = getResources().getDisplayMetrics().density;
@@ -111,6 +124,9 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         frameLayout.invalidate();
         player.setLayoutParams(playerParams);
         frameLayout.addView(player);
+
+        player.getLayoutParams().height = pictureHeight;//dpHeightInPx;
+        player.getLayoutParams().width = pictureWidth;
 
         player.requestLayout();
 
@@ -142,14 +158,6 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         }
     }
     public void createWorld(){
-
-        //get screen size
-        WindowManager wm = getWindowManager();
-        Display disp = wm.getDefaultDisplay();
-        Point size = new Point();
-        disp.getSize(size);
-        screenWidth = size.x;
-        screenHeight = size.y;
 
         Log.d("screenWidth", "screen width is : " + screenWidth);
         Log.d("screenHeight", "screen height is : " + screenHeight);
