@@ -83,15 +83,12 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         printWorld();
         player();
 
-        PlayerView playerView = new PlayerView(this);
-
         GridLayout swipeControl = (GridLayout) findViewById(R.id.grid);
         swipeControl.setOnTouchListener(this);
 
 
     }
     public void pictureSize(){
-
 
         //get screen size
         WindowManager wm = getWindowManager();
@@ -115,7 +112,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
     public void player(){
 
         pictureSize();
-        ImageView player = new ImageView(this);
+        PlayerView player = new PlayerView(this);
         player.setImageResource(R.drawable.bob);
         player.setId(R.id.player);
         FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(pictureWidth ,pictureHeight );
