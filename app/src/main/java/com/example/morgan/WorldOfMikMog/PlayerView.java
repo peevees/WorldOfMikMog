@@ -28,6 +28,7 @@ public class PlayerView extends ImageView {
     public PlayerView(Context context, AttributeSet attrs){
         super(context, attrs);
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event){
 
