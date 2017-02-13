@@ -16,23 +16,9 @@ public class PlayerView extends ImageView {
 
     public PlayerView(Context context){
         super(context);
-        init();
     }
     public PlayerView(Context context, AttributeSet attrs){
         super(context, attrs);
-        init();
-    }
-    void init() {
-        pressedScreen();
-        releasedScreen();
-    }
-
-    public void pressedScreen(){
-        Log.d("PRESSED_SCREEN", "pressed screen cordinate: " + touchStartX + ", " + touchStartY);
-    }
-    public void releasedScreen(){
-
-        Log.d("PRESSED_SCREEN", "pressed screen cordinate: " + touchEndX + ", " + touchEndY);
     }
     @Override
     public boolean onTouchEvent(MotionEvent event){
@@ -43,10 +29,12 @@ public class PlayerView extends ImageView {
             case(MotionEvent.ACTION_DOWN):
                 touchStartX = event.getX();
                 touchStartY = event.getY();
+                Log.d("PRESSED_DOWN", "press down on: " + touchStartX + ", " + touchStartY);
                 return true;
             case(MotionEvent.ACTION_UP):
                 touchEndX = event.getX();
                 touchEndY = event.getY();
+                Log.d("PRESSED_DOWN", "press down on: " + touchEndX + ", " + touchEndY);
                 return true;
             default:
                 return super.onTouchEvent(event);
