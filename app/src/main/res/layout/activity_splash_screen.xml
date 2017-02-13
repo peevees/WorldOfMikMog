@@ -23,10 +23,8 @@
         android:layout_height="350dp">
 
         <TableRow>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo"/>
+
+
         </TableRow>
     </TableLayout>
     <Button
