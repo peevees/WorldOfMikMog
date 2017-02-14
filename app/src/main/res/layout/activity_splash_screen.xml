@@ -50,7 +50,7 @@
             android:layout_marginRight="2dp"
             android:layout_margin="0dp"
             android:layout_weight="1"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
             android:padding="10dp"
             android:text="PLAY GAME"
             android:onClick="startGame"
