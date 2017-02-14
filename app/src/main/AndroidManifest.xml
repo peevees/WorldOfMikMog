@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".splashScreen"
-            android:screenOrientation="portrait"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"> <!-- this removes the app action bar -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
