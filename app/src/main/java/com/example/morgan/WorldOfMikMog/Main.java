@@ -127,8 +127,8 @@ public class Main extends AppCompatActivity {
                     case 'G':
                         myImageView.setImageResource(R.drawable.grass);
                         break;
+
                 }
-                //myImageView.setImageResource(R.drawable.grassdb);
 
                 GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
 
@@ -141,10 +141,22 @@ public class Main extends AppCompatActivity {
             }
         }
     }
+    public boolean moveAllowed(int posX, int posY){
+        Log.d("IN_METHOD", "METHOD moveAllowed entered");
+        if(posX < 0 || posY < 0) {
+            return false;
+        }
+        if(world[posX][posY] == 'G') {
+            Log.d("IN_GRASS_CHECK", "IF grass check entered");
+            return true;
+        }
+        Log.d("IN_GRASS_CHECK", "IF moveAllowed left");
+        return false;
+    }
     public void createWorld(){
 
         world = new char[][]{
-                {'T', 'G', 'G', 'G', 'S', 'T', 'S', 'G', 'G', 'G', 'G', 'T', 'T', 'T', 'T', 'T'},
+                {'G', 'G', 'G', 'G', 'S', 'T', 'S', 'G', 'G', 'G', 'G', 'T', 'T', 'T', 'T', 'T'},
                 {'T', 'G', 'G', 'S', 'S', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'T', 'T', 'T', 'T'},
                 {'T', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'T', 'T', 'T'},
                 {'T', 'S', 'G', 'G', 'S', 'S', 'G', 'S', 'S', 'G', 'G', 'S', 'G', 'G', 'T', 'T'},
