@@ -26,7 +26,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
 
     //ImageViews
-    private ImageView[][] Cell;
+    private char[][] world;
     private ImageView player;
 
     //Size
@@ -112,7 +112,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
     public void player(){
 
         pictureSize();
-        PlayerView player = new PlayerView(this);
+        PlayerView player = new PlayerView(this, screenWidth, screenHeight);
         player.setImageResource(R.drawable.bob);
         player.setId(R.id.player);
         FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(pictureWidth ,pictureHeight );
@@ -138,9 +138,11 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         gridLayout.invalidate();
         gridLayout.setColumnCount(columnCount);
         gridLayout.setRowCount(rowCount);
+        myImageView = new ImageView(this);
 
-        for(int i = 0; i < (columnCount*rowCount); i ++){
-            myImageView = new ImageView(this);
+        for(int i = 0; i < columnCount; i ++){
+            for(int j = 0; j < rowCount; j ++)
+
             myImageView.setImageResource(R.drawable.grassdb);
 
 
@@ -159,30 +161,25 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         Log.d("screenWidth", "screen width is : " + screenWidth);
         Log.d("screenHeight", "screen height is : " + screenHeight);
 
-        //Cell = new ImageView[][]
+
+
+        world = new char[][]{
+                {'T', 'G', 'G', 'G', 'S', 'T', 'S', 'G', 'G', 'G', 'G', 'T', 'T', 'T', 'T', 'T'},
+                {'T', 'G', 'G', 'S', 'S', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'T', 'T', 'T', 'T'},
+                {'T', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'T', 'T', 'T'},
+                {'T', 'S', 'G', 'G', 'S', 'S', 'G', 'S', 'S', 'G', 'G', 'S', 'G', 'G', 'T', 'T'},
+                {'G', 'G', 'G', 'G', 'S', 'S', 'G', 'S', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'T'},
+                {'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'G'},
+                {'S', 'G', 'G', 'G', 'T', 'T', 'T', 'G', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'G'},
+                {'G', 'G', 'G', 'T', 'G', 'G', 'G', 'T', 'G', 'G', 'G', 'S', 'G', 'G', 'G', 'S'},
+                {'G', 'T', 'T', 'G', 'G', 'T', 'G', 'G', 'T', 'G', 'G', 'G', 'G', 'G', 'S', 'S'},
+                {'G', 'G', 'G', 'G', 'T', 'T', 'T', 'G', 'G', 'G', 'G', 'G', 'G', 'S', 'S', 'S'}
+        };
+
     }
     /*
     //change position
     public void changePos() {
-
-        //move player
-        switch (direction){
-            case left:
-                playerX -= playerSpeed;
-                break;
-            case right:
-                playerX += playerSpeed;
-                break;
-            case up:
-                playerY += playerSpeed;
-                break;
-            case down:
-                playerX -= playerSpeed;
-                break;
-            default:
-                playerX = playerX;
-                break;
-        }
 
         //Check player position//TODO check player to stay inside frame and against objects
 
