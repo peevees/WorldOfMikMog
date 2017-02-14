@@ -31,6 +31,34 @@
         android:layout_marginTop="2dp">
 
             <ImageView
+                android:layout_width="520dp"
+                android:layout_height="320dp"
+                android:src="@drawable/logo"
+                android:layout_gravity="center_horizontal"
+                android:padding="2dp"
+                android:layout_marginRight="16dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="top"
+            android:padding="2dp"
+            android:text="PLAY GAME"
+            android:onClick="startGame"
+            android:id="@+id/button3"
+            android:elevation="2dp"
+            style="@style/Widget.AppCompat.Button.Colored" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp">
+
+            <ImageView
                 android:layout_width="510dp"
                 android:layout_height="320dp"
                 android:src="@drawable/logo"
