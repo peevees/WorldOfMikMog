@@ -1,44 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_splash_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.morgan.WorldOfMikMog.splashScreen"
-    android:gravity="center"
-    android:orientation="vertical"
     android:background = "@drawable/background">
+
+
+
+
+    <TableRow
+        android:id="@+id/row1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MikMog Studios Presents:"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="2dp"
+            android:textColor="#000"
+            android:textSize="40px"
+            android:textStyle="bold"
+            />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="38dp">
+
+            <ImageView
+
+                android:layout_width="500dp"
+                android:layout_height="280dp"
+                android:src="@drawable/logo"
+                android:layout_gravity="center"
+                android:padding="0dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:padding="10dp"
+            android:text="PLAY GAME"
+            android:onClick="startGame"
+            android:id="@+id/button3"
+            android:elevation="0dp"
+            style="@style/Widget.AppCompat.Button.Colored"
+             />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dp">
 
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MikMog Studios Presents:"
-        android:textSize="30sp"
-        android:textColor="#005c99"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:padding="2dp"
+        android:text="Copyright by MikMogStudios"
+        android:textColor="#000"
+        android:textSize="16sp"/>
 
-    <TableLayout
-        android:gravity="center_vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="350dp">
-
-        <TableRow>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo"/>
-        </TableRow>
-    </TableLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PLAY GAME"
-        android:layout_marginTop="10dp"
-        android:onClick="startGame"/>
-
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Options"
-        />
-</LinearLayout>
+    </TableRow>
+</TableLayout>
