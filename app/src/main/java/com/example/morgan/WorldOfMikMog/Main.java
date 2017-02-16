@@ -17,32 +17,21 @@ import android.widget.ImageView;
 
 
 //TODO change walking code, add animation,
-public class Main extends AppCompatActivity implements View.OnTouchListener {
-
-    //gesture detector
-    private GestureDetectorCompat detector;
+public class Main extends AppCompatActivity {
 
     //TextViews
 
 
     //ImageViews
-    private ImageView[][] Cell;
-    private ImageView player;
+    private char[][] world;
 
     //Size
     private int screenWidth;
     private int screenHeight;
-    private int rowCount = 6;
+    private int rowCount = 10;
     private int columnCount = 15;
     private int pictureWidth;
     private int pictureHeight;
-
-    //postion
-    private int playerY;
-    private int playerX;
-
-    //Speed
-    private int playerSpeed;
 
     //Sounds and music
     private SoundPlayer sound;
@@ -56,15 +45,9 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         //set immersive mode
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
-        //detector
-        detector = new GestureDetectorCompat(this, onSwipeListener);
-        //player.setOnTouchListener(this);
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         //music & sound
         sound = new SoundPlayer(this);
@@ -74,74 +57,13 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         music.setVolume(0.1f, 0.1f);
         music.setLooping(true);
 
-        //speed
-        playerSpeed = Math.round(screenHeight / 60F);
-
-
-
+        //create world print world and create player and print player
         createWorld();
         printWorld();
         player();
-
-        GridLayout swipeControl = (GridLayout) findViewById(R.id.grid);
-        swipeControl.setOnTouchListener(this);
-
-
     }
+
     public void pictureSize(){
-        pictureWidth = screenWidth / columnCount;
-        pictureHeight = screenWidth / columnCount;
-        Log.d("Picture_width", "the width of the picture is " + pictureWidth);
-
-        /*pxtodp
-        final float scale = getResources().getDisplayMetrics().density;
-        dpWidthInPx  = (int) (pictureWidth * scale);//TODO make size of pictures depending on size of screen
-        dpHeightInPx = (int) (pictureHeight * scale);
-        */
-    }
-    public void player(){
-
-        pictureSize();
-        ImageView player = new ImageView(this);
-        player.setImageResource(R.drawable.bob);
-        player.setId(R.id.player);
-        FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(pictureWidth ,pictureHeight );
-
-        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.activity_main);
-        frameLayout.invalidate();
-        player.setLayoutParams(playerParams);
-        frameLayout.addView(player);
-
-        player.requestLayout();
-
-
-    }
-    public void printWorld(){//TODO make dependent on screensize
-
-        pictureSize();
-        ImageView myImageView;
-
-        GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
-        gridLayout.invalidate();
-        gridLayout.setColumnCount(columnCount);
-        gridLayout.setRowCount(rowCount);
-
-        for(int i = 0; i < (columnCount*rowCount); i ++){
-            myImageView = new ImageView(this);
-            myImageView.setImageResource(R.drawable.grassdb);
-
-
-            GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
-
-            myImageView.setLayoutParams(gridParams);
-
-            gridLayout.addView(myImageView);
-            myImageView.getLayoutParams().height = pictureHeight;//dpHeightInPx;
-            myImageView.getLayoutParams().width = pictureWidth;
-            myImageView.requestLayout();
-        }
-    }
-    public void createWorld(){
 
         //get screen size
         WindowManager wm = getWindowManager();
@@ -151,38 +73,102 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         screenWidth = size.x;
         screenHeight = size.y;
 
-        Log.d("screenWidth", "screen width is : " + screenWidth);
-        Log.d("screenHeight", "screen height is : " + screenHeight);
+        pictureWidth = screenWidth / columnCount;
+        pictureHeight = screenHeight / rowCount;
 
-        //Cell = new ImageView[][]
+        /*pxtodp
+        final float scale = getResources().getDisplayMetrics().density;
+        dpWidthInPx  = (int) (pictureWidth * scale);
+        dpHeightInPx = (int) (pictureHeight * scale);
+        */
     }
-    /*
-    //change position
-    public void changePos() {
+    public void player(){
 
-        //move player
-        switch (direction){
-            case left:
-                playerX -= playerSpeed;
-                break;
-            case right:
-                playerX += playerSpeed;
-                break;
-            case up:
-                playerY += playerSpeed;
-                break;
-            case down:
-                playerX -= playerSpeed;
-                break;
-            default:
-                playerX = playerX;
-                break;
+        pictureSize();
+        PlayerView player = new PlayerView(this, screenWidth, screenHeight);
+        player.setImageResource(R.drawable.bob);
+        player.setId(R.id.player);
+        FrameLayout.LayoutParams playerParams = new FrameLayout.LayoutParams(pictureWidth ,pictureHeight );
+
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.activity_main);
+        frameLayout.invalidate();
+        player.setLayoutParams(playerParams);
+        frameLayout.addView(player);
+
+        player.getLayoutParams().height = pictureHeight;
+        player.getLayoutParams().width = pictureWidth;
+
+        player.requestLayout();
+
+    }
+    public void printWorld(){
+
+        pictureSize();
+        ImageView myImageView;
+
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.grid);
+        gridLayout.invalidate();
+        gridLayout.setColumnCount(columnCount);
+        gridLayout.setRowCount(rowCount);
+
+        for(int i = 0; i < rowCount; i ++){
+            for(int j = 0; j < columnCount; j ++) {
+                myImageView = new ImageView(this);
+
+                switch(world[i][j]) {
+                    case 'T':
+                        myImageView.setImageResource(R.drawable.tree);
+                        break;
+                    case 'S':
+                        myImageView.setImageResource(R.drawable.stone);
+                        break;
+                    case 'G':
+                        myImageView.setImageResource(R.drawable.grass);
+                        break;
+
+                }
+                Log.d("World", "" + world[i][j]);
+
+                GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
+
+                myImageView.setLayoutParams(gridParams);
+                gridLayout.addView(myImageView);
+
+                myImageView.getLayoutParams().height = pictureHeight;//dpHeightInPx;
+                myImageView.getLayoutParams().width = pictureWidth;
+                myImageView.requestLayout();
+            }
         }
-
-        //Check player position//TODO check player to stay inside frame and against objects
-
     }
-    */
+    public boolean moveAllowed(int posX, int posY){
+        Log.d("IN_METHOD", "METHOD moveAllowed entered");
+        if(posX < 0 || posY < 0 || posX >= columnCount || posY >= rowCount) {
+            Log.d("IN_SCREEN_CHECK", "IF inside screen entered");
+            return false;
+        }
+        if(world[posY][posX] == 'G') {
+            Log.d("IN_GRASS_CHECK", "IF grass check entered");
+            return true;
+        }
+        Log.d("IN_METHOD", "IF moveAllowed left");
+        return false;
+    }
+    public void createWorld(){
+
+        world = new char[][]{
+                {'G', 'G', 'G', 'G', 'S', 'T', 'S', 'G', 'G', 'G', 'G', 'T', 'T', 'T', 'T', 'T'},
+                {'T', 'G', 'G', 'S', 'S', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'T', 'T', 'T', 'T'},
+                {'T', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'T', 'T', 'T'},
+                {'T', 'S', 'G', 'G', 'S', 'S', 'G', 'S', 'S', 'G', 'G', 'S', 'G', 'G', 'T', 'T'},
+                {'G', 'G', 'G', 'G', 'S', 'S', 'G', 'S', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'T'},
+                {'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'G'},
+                {'S', 'G', 'G', 'G', 'T', 'T', 'T', 'G', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'G'},
+                {'G', 'G', 'G', 'T', 'G', 'G', 'G', 'T', 'G', 'G', 'G', 'S', 'G', 'G', 'G', 'S'},
+                {'G', 'T', 'T', 'G', 'G', 'T', 'G', 'G', 'T', 'G', 'G', 'G', 'G', 'G', 'S', 'S'},
+                {'G', 'G', 'G', 'G', 'T', 'T', 'T', 'G', 'G', 'G', 'G', 'G', 'G', 'S', 'S', 'S'}
+        };
+
+    }//TODO check player against objects
 
     //disable return button
     @Override
@@ -196,35 +182,5 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
         return super.dispatchKeyEvent(event);
     }
-
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        return detector.onTouchEvent(motionEvent);
-    }
-
-    OnSwipeListener onSwipeListener = new OnSwipeListener() {
-
-        @Override
-        public boolean onSwipe(Direction direction) {
-
-            // Possible implementation
-            if(direction == Direction.left|| direction == Direction.right) {
-                Log.d("LEFTRIGHT", "left or right swipe");
-                playerX -= playerSpeed;
-                // Do something COOL like animation or whatever you want
-                // Refer to your view if needed using a global reference
-                return true;
-            }
-            else if(direction == Direction.up|| direction == Direction.down) {
-                Log.d("DOWNUP", "up or down swipe");
-                playerY -= playerSpeed;
-                // Do something COOL like animation or whatever you want
-                // Refer to your view if needed using a global reference
-                return true;
-            }
-            return super.onSwipe(direction);
-        }
-    };
 
 }
