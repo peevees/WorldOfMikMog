@@ -31,7 +31,7 @@
         android:layout_marginTop="2dp">
 
             <ImageView
-                android:layout_width="520dp"
+                android:layout_width="510dp"
                 android:layout_height="320dp"
                 android:src="@drawable/logo"
                 android:layout_gravity="center_horizontal"
