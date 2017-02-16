@@ -27,6 +27,8 @@ public class PlayerView extends ImageView {
     private float playerX;
     private float playerWidth;
     private float playerHeight;
+    private int playerPosX = 0;
+    private int playerPosY = 0;
 
     public PlayerView(Context context, int screenW, int screenH){//constructor
         super(context);
@@ -59,25 +61,59 @@ public class PlayerView extends ImageView {
                 deltaY = touchStartY - touchEndY;
                 deltaX = touchStartX - touchEndX;
                 if (deltaY > 50 && deltaX < 10) {//up
+                    if(((Main)getContext()).moveAllowed(playerPosX, playerPosY-1)){
+                        playerPosY--;
+
+                        player.setY(playerY - playerHeight);
+                        playerY = player.getY();
+                    }
+                    Log.d("POS_AFTER_MOVEMENT", "UP move playerY: " + playerY + " playerPosY: " + playerPosY);
+                    /*
                     if(playerY - playerHeight >= 0) {
                         player.setY(playerY - playerHeight);
                         playerY = player.getY();
                     }
+                    */
                 } else if (deltaY < -50 && deltaX < 10) {//down
+                    if(((Main)getContext()).moveAllowed(playerPosX, playerPosY+1)){
+                        playerPosY++;
+                        player.setY(playerY + playerHeight);
+                        playerY = player.getY();
+                    }
+                    Log.d("POS_AFTER_MOVEMENT", "DOWN move playerY: " + playerY + " playerPosY: " + playerPosY);
+                    /*
                     if(playerY + playerHeight < screenHeight - playerHeight) {
                         player.setY(playerY + playerHeight);
                         playerY = player.getY();
                     }
+                    */
                 } else if (deltaY < 10 && deltaX > 50) {//left
+                    if(((Main)getContext()).moveAllowed(playerPosX-1, playerPosY)){
+                        playerPosX--;
+                        player.setX(playerX - playerWidth);
+                        playerX = player.getX();
+
+                    }
+                    Log.d("POS_AFTER_MOVEMENT", "LEFT move playerX: " + playerX + " playerPosX: " + playerPosX);
+                    /*
                     if(playerX - playerWidth <= 0) {
                         player.setX(playerX - playerWidth);
                         playerX = player.getX();
                     }
+                    */
                 } else if (deltaY < 10 && deltaX < -50) {//right
+                    if(((Main)getContext()).moveAllowed(playerPosX+1, playerPosY)){
+                        playerPosX++;
+                        player.setX(playerX + playerWidth);
+                        playerX = player.getX();
+                    }
+                    Log.d("POS_AFTER_MOVEMENT", "RIGHT move playerX: " + playerX + " playerPosX: " + playerPosX);
+                    /*
                     if(playerX + playerWidth < screenWidth - playerWidth) {
                         player.setX(playerX + playerWidth);
                         playerX = player.getX();
                     }
+                    */
                 }
                 return true;
             default:
