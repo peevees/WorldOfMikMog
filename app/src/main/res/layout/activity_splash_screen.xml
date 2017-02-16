@@ -11,18 +11,19 @@
 
 
     <TableRow
-        android:id="@+id/row1"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="0dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MikMog Studios Presents:"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:padding="2dp"
+            android:layout_marginTop="4dp"
             android:textColor="#000"
             android:textSize="40px"
             android:textStyle="bold"
@@ -30,18 +31,19 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/row2"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="38dp">
+        android:layout_marginTop="2dp">
 
             <ImageView
 
-                android:layout_width="500dp"
-                android:layout_height="280dp"
+                android:layout_width="520dp"
+                android:layout_height="320dp"
                 android:src="@drawable/logo"
-                android:layout_gravity="center"
-                android:padding="0dp"/>
+                android:layout_gravity="center_horizontal"
+                android:padding="2dp"
+                android:layout_marginRight="16dp"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -51,11 +53,11 @@
             android:layout_margin="0dp"
             android:layout_weight="1"
             android:layout_gravity="top"
-            android:padding="10dp"
+            android:padding="2dp"
             android:text="PLAY GAME"
             android:onClick="startGame"
             android:id="@+id/button3"
-            android:elevation="0dp"
+            android:elevation="2dp"
             style="@style/Widget.AppCompat.Button.Colored"
              />
 
@@ -71,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="left"
+        android:gravity="center_horizontal"
         android:padding="2dp"
         android:text="Copyright by MikMog Studios"
         android:textColor="#000"
