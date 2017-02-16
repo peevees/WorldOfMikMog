@@ -7,11 +7,7 @@
     tools:context="com.example.morgan.WorldOfMikMog.splashScreen"
     android:background = "@drawable/background">
 
-
-
-
     <TableRow
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp">
@@ -26,18 +22,15 @@
             android:layout_marginTop="4dp"
             android:textColor="#000"
             android:textSize="40px"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
     </TableRow>
 
     <TableRow
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="2dp">
 
             <ImageView
-
                 android:layout_width="520dp"
                 android:layout_height="320dp"
                 android:src="@drawable/logo"
@@ -58,9 +51,7 @@
             android:onClick="startGame"
             android:id="@+id/button3"
             android:elevation="2dp"
-            style="@style/Widget.AppCompat.Button.Colored"
-             />
-
+            style="@style/Widget.AppCompat.Button.Colored" />
     </TableRow>
 
     <TableRow
@@ -68,16 +59,14 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="4dp">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:padding="2dp"
-        android:text="Copyright by MikMog Studios"
-        android:textColor="#000"
-        android:textSize="16sp"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:padding="2dp"
+            android:text="Copyright by MikMog Studios"
+            android:textColor="#000"
+            android:textSize="16sp"/>
     </TableRow>
 </TableLayout>
