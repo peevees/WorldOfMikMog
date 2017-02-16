@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-public class PlayerView extends ImageView {//// TODO: chekc array movement is borked for now
+public class PlayerView extends ImageView {
 
     //movement
     private float touchStartX;
@@ -67,6 +67,7 @@ public class PlayerView extends ImageView {//// TODO: chekc array movement is bo
                         player.setY(playerY - playerHeight);
                         playerY = player.getY();
                     }
+                    Log.d("POS_AFTER_MOVEMENT", "UP move playerY: " + playerY + " playerPosY: " + playerPosY);
                     /*
                     if(playerY - playerHeight >= 0) {
                         player.setY(playerY - playerHeight);
@@ -79,6 +80,7 @@ public class PlayerView extends ImageView {//// TODO: chekc array movement is bo
                         player.setY(playerY + playerHeight);
                         playerY = player.getY();
                     }
+                    Log.d("POS_AFTER_MOVEMENT", "DOWN move playerY: " + playerY + " playerPosY: " + playerPosY);
                     /*
                     if(playerY + playerHeight < screenHeight - playerHeight) {
                         player.setY(playerY + playerHeight);
@@ -90,7 +92,9 @@ public class PlayerView extends ImageView {//// TODO: chekc array movement is bo
                         playerPosX--;
                         player.setX(playerX - playerWidth);
                         playerX = player.getX();
+
                     }
+                    Log.d("POS_AFTER_MOVEMENT", "LEFT move playerX: " + playerX + " playerPosX: " + playerPosX);
                     /*
                     if(playerX - playerWidth <= 0) {
                         player.setX(playerX - playerWidth);
@@ -103,6 +107,7 @@ public class PlayerView extends ImageView {//// TODO: chekc array movement is bo
                         player.setX(playerX + playerWidth);
                         playerX = player.getX();
                     }
+                    Log.d("POS_AFTER_MOVEMENT", "RIGHT move playerX: " + playerX + " playerPosX: " + playerPosX);
                     /*
                     if(playerX + playerWidth < screenWidth - playerWidth) {
                         player.setX(playerX + playerWidth);
