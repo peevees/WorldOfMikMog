@@ -47,9 +47,7 @@ public class Main extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         //music & sound
         sound = new SoundPlayer(this);
@@ -129,6 +127,7 @@ public class Main extends AppCompatActivity {
                         break;
 
                 }
+                Log.d("World", "" + world[i][j]);
 
                 GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
 
@@ -143,14 +142,15 @@ public class Main extends AppCompatActivity {
     }
     public boolean moveAllowed(int posX, int posY){
         Log.d("IN_METHOD", "METHOD moveAllowed entered");
-        if(posX < 0 || posY < 0) {
+        if(posX < 0 || posY < 0 || posX >= columnCount || posY >= rowCount) {
+            Log.d("IN_SCREEN_CHECK", "IF inside screen entered");
             return false;
         }
-        if(world[posX][posY] == 'G') {
+        if(world[posY][posX] == 'G') {
             Log.d("IN_GRASS_CHECK", "IF grass check entered");
             return true;
         }
-        Log.d("IN_GRASS_CHECK", "IF moveAllowed left");
+        Log.d("IN_METHOD", "IF moveAllowed left");
         return false;
     }
     public void createWorld(){
