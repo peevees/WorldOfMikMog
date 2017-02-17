@@ -27,6 +27,7 @@ public class splashScreen extends AppCompatActivity {
             sound = MediaPlayer.create(this, R.raw.start);
             sound.setVolume(0.2f, 0.2f);
             sound.start();
+            sound.setLooping(true);
 
 
     }

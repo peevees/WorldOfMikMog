@@ -60,8 +60,8 @@ public class Main extends AppCompatActivity {
         sound = new SoundPlayer(this);
         music = new MediaPlayer();
         music = MediaPlayer.create(this, R.raw.forest);//TODO change sound depending on location
-        music.start();
         music.setVolume(0.2f, 0.2f);
+        music.start();
         music.setLooping(true);
 
         //create world print world and create player and print player
@@ -198,6 +198,7 @@ public class Main extends AppCompatActivity {
         }
         if(world[posY][posX] == 'C') {
             startActivity(new Intent(getApplicationContext(),GameOver.class));
+            music.stop();
         }
         Log.d("IN_METHOD", "IF moveAllowed left");
         return false;
