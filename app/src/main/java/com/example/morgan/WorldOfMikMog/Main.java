@@ -137,22 +137,22 @@ public class Main extends AppCompatActivity {
                         //myImageView.setImageResource(R.drawable.tree);
                         break;
                     case 'S':
-                        /*
+
                         type = (int)Math.floor(Math.random()*3);
                         Log.d("DEBUG_RANDOM", "RANDOM number is: " + type);
                         switch(type){
                             case 0:
-                                myImageView.setImageResource(R.drawable.grass);
+                                myImageView.setImageResource(R.drawable.stone);
                                 break;
                             case 1:
-                                myImageView.setImageResource(R.drawable.grassdb);
+                                myImageView.setImageResource(R.drawable.stone2);
                                 break;
                             case 2:
-                                myImageView.setImageResource(R.drawable.grass2);
+                                myImageView.setImageResource(R.drawable.stone3);
                                 break;
                         }
-                        */
-                        myImageView.setImageResource(R.drawable.stone);
+
+                        //myImageView.setImageResource(R.drawable.stone);
                         break;
                     case 'G':
                         type = (int)Math.floor(Math.random()*3);
