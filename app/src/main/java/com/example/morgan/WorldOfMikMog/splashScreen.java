@@ -21,8 +21,11 @@ public class splashScreen extends AppCompatActivity {
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
 
+
+
             sound = new MediaPlayer();
-            sound = MediaPlayer.create(this, R.raw.tes4title);
+            sound = MediaPlayer.create(this, R.raw.start);
+            sound.setVolume(0.2f, 0.2f);
             sound.start();
 
 

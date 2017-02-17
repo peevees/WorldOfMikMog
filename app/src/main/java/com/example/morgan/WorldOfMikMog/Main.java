@@ -59,9 +59,9 @@ public class Main extends AppCompatActivity {
         //music & sound
         sound = new SoundPlayer(this);
         music = new MediaPlayer();
-        music = MediaPlayer.create(this, R.raw.success);//TODO change sound depending on location
+        music = MediaPlayer.create(this, R.raw.forest);//TODO change sound depending on location
         music.start();
-        music.setVolume(0.1f, 0.1f);
+        music.setVolume(0.2f, 0.2f);
         music.setLooping(true);
 
         //create world print world and create player and print player
