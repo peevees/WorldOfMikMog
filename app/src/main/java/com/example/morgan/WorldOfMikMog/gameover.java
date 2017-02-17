@@ -1,6 +1,7 @@
 package com.example.morgan.WorldOfMikMog;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -13,6 +14,8 @@ import android.view.WindowManager;
 
 public class GameOver extends AppCompatActivity{
 
+    protected MediaPlayer sound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +26,19 @@ public class GameOver extends AppCompatActivity{
         setContentView(R.layout.activity_gameover);
 
 
+
+        sound = new MediaPlayer();
+        sound = MediaPlayer.create(this, R.raw.clear);
+        sound.setVolume(0.2f, 0.2f);
+        sound.start();
+
+
     }
 
     public void restartGame(View view){
 
         startActivity(new Intent(getApplicationContext(),splashScreen.class));
+        sound.stop();
     }
 
     //disable return button
