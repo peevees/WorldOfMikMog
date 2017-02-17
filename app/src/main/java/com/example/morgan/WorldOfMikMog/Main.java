@@ -162,10 +162,10 @@ public class Main extends AppCompatActivity {
                                 myImageView.setImageResource(R.drawable.grass);
                                 break;
                             case 1:
-                                myImageView.setImageResource(R.drawable.grassdb);
+                                myImageView.setImageResource(R.drawable.grass3);
                                 break;
                             case 2:
-                                myImageView.setImageResource(R.drawable.grass2);
+                                 myImageView.setImageResource(R.drawable.grass2);
                                 break;
                         }
                         //myImageView.setImageResource(R.drawable.grass);
