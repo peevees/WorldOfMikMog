@@ -1,5 +1,6 @@
 package com.example.morgan.WorldOfMikMog;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.support.v4.view.GestureDetectorCompat;
@@ -24,6 +25,7 @@ public class Main extends AppCompatActivity {
 
     //ImageViews
     private char[][] world;
+    private int type;
 
     //Size
     private int screenWidth;
@@ -122,18 +124,57 @@ public class Main extends AppCompatActivity {
 
                 switch(world[i][j]) {
                     case 'T':
-                        myImageView.setImageResource(R.drawable.tree);
+                        type = (int)Math.floor(Math.random()*2);
+                        Log.d("DEBUG_RANDOM", "RANDOM number is: " + type);
+                        switch(type){
+                            case 0:
+                                myImageView.setImageResource(R.drawable.tree);
+                                break;
+                            case 1:
+                                myImageView.setImageResource(R.drawable.tree2);
+                                break;
+                        }
+                        //myImageView.setImageResource(R.drawable.tree);
                         break;
                     case 'S':
+                        /*
+                        type = (int)Math.floor(Math.random()*3);
+                        Log.d("DEBUG_RANDOM", "RANDOM number is: " + type);
+                        switch(type){
+                            case 0:
+                                myImageView.setImageResource(R.drawable.grass);
+                                break;
+                            case 1:
+                                myImageView.setImageResource(R.drawable.grassdb);
+                                break;
+                            case 2:
+                                myImageView.setImageResource(R.drawable.grass2);
+                                break;
+                        }
+                        */
                         myImageView.setImageResource(R.drawable.stone);
                         break;
                     case 'G':
-                        myImageView.setImageResource(R.drawable.grass);
+                        type = (int)Math.floor(Math.random()*3);
+                        Log.d("DEBUG_RANDOM", "RANDOM number is: " + type);
+                        switch(type){
+                            case 0:
+                                myImageView.setImageResource(R.drawable.grass);
+                                break;
+                            case 1:
+                                myImageView.setImageResource(R.drawable.grassdb);
+                                break;
+                            case 2:
+                                myImageView.setImageResource(R.drawable.grass2);
+                                break;
+                        }
+                        //myImageView.setImageResource(R.drawable.grass);
                         break;
-
-                }
+                    case 'C':
+                        myImageView.setImageResource(R.drawable.treasure);
+                        break;
+                    }
                 Log.d("World", "" + world[i][j]);
-
                 GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
 
                 myImageView.setLayoutParams(gridParams);
@@ -155,6 +196,9 @@ public class Main extends AppCompatActivity {
             Log.d("IN_GRASS_CHECK", "IF grass check entered");
             return true;
         }
+        if(world[posY][posX] == 'C') {
+            startActivity(new Intent(getApplicationContext(),GameOver.class));
+        }
         Log.d("IN_METHOD", "IF moveAllowed left");
         return false;
     }
@@ -166,7 +210,7 @@ public class Main extends AppCompatActivity {
                 {'T', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'T', 'T', 'T'},
                 {'T', 'S', 'G', 'G', 'S', 'S', 'G', 'S', 'S', 'G', 'G', 'S', 'G', 'G', 'T', 'T'},
                 {'G', 'G', 'G', 'G', 'S', 'S', 'G', 'S', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'T'},
-                {'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'G'},
+                {'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'S', 'S', 'C', 'G', 'G', 'G'},
                 {'S', 'G', 'G', 'G', 'T', 'T', 'T', 'G', 'G', 'G', 'S', 'S', 'S', 'G', 'G', 'G'},
                 {'G', 'G', 'G', 'T', 'G', 'G', 'G', 'T', 'G', 'G', 'G', 'S', 'G', 'G', 'G', 'S'},
                 {'G', 'T', 'T', 'G', 'G', 'T', 'G', 'G', 'T', 'G', 'G', 'G', 'G', 'G', 'S', 'S'},

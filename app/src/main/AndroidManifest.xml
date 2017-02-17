@@ -22,6 +22,12 @@
             android:name=".Main"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".GameOver"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+
+
+            />
         <activity android:name=".GameEngine" />
         <activity android:name=".SpriteSheet"></activity>
     </application>

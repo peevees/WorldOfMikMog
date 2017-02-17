@@ -1,16 +1,17 @@
 package com.example.morgan.WorldOfMikMog;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-public class splashScreen extends AppCompatActivity {
+/**
+ * Created by Morgan on 2017-02-16.
+ */
 
-    private MediaPlayer sound;
+public class GameOver extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,20 +19,18 @@ public class splashScreen extends AppCompatActivity {
 
         // Helskärm
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_splash_screen);
-
-            sound = new MediaPlayer();
-            sound = MediaPlayer.create(this, R.raw.tes4title);
-            sound.start();
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_gameover);
 
 
     }
 
-    public void startGame(View view){
-        sound.release();
-        startActivity(new Intent(getApplicationContext(),Main.class));
+    public void restartGame(View view){
+
+        startActivity(new Intent(getApplicationContext(),splashScreen.class));
     }
+
+    //disable return button
     @Override
     public boolean dispatchKeyEvent(KeyEvent event){
         if(event.getAction() == KeyEvent.ACTION_DOWN){
