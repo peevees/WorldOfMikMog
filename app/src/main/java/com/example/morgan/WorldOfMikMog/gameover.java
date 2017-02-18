@@ -39,6 +39,7 @@ public class GameOver extends AppCompatActivity{
 
         startActivity(new Intent(getApplicationContext(),splashScreen.class));
         sound.stop();
+        sound.release();
     }
 
     //disable return button

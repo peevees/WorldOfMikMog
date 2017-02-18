@@ -199,6 +199,8 @@ public class Main extends AppCompatActivity {
         if(world[posY][posX] == 'C') {
             startActivity(new Intent(getApplicationContext(),GameOver.class));
             music.stop();
+            music.reset();
+            music.release();
         }
         Log.d("IN_METHOD", "IF moveAllowed left");
         return false;
