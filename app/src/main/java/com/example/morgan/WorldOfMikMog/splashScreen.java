@@ -33,6 +33,7 @@ public class splashScreen extends AppCompatActivity {
     }
 
     public void startGame(View view){
+        sound.reset();
         sound.release();
         startActivity(new Intent(getApplicationContext(),Main.class));
     }
