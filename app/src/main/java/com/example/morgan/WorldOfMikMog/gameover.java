@@ -12,7 +12,7 @@ import android.view.WindowManager;
  * Created by Morgan on 2017-02-16.
  */
 
-public class gameOver extends AppCompatActivity{
+public class GameOver extends AppCompatActivity{
 
     protected MediaPlayer sound;
 
