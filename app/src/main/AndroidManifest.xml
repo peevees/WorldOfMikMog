@@ -22,7 +22,7 @@
             android:name=".Main"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".GameOver"
+        <activity android:name=".gameOver"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 
