@@ -33,11 +33,14 @@ public class splashScreen extends AppCompatActivity {
     }
 
     public void startGame(View view){
-        sound.stop();
-        sound.reset();
-        sound.release();
+        if(sound.isPlaying()) {
+            sound.stop();
+            sound.reset();
+            sound.release();
+        }
         startActivity(new Intent(getApplicationContext(),Main.class));
     }
+/*
     // This method executes when the player quits the game
     protected void onResume() {
         super.onResume();
@@ -53,6 +56,7 @@ public class splashScreen extends AppCompatActivity {
 
         sound.pause();
     }
+    */
     @Override
     public boolean dispatchKeyEvent(KeyEvent event){
         if(event.getAction() == KeyEvent.ACTION_DOWN){

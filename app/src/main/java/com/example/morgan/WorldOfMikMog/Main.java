@@ -221,6 +221,7 @@ public class Main extends AppCompatActivity {
         };
 
     }//TODO check player against objects
+    /*
     // This method executes when the player quits the game
     protected void onResume() {
         super.onResume();
@@ -236,7 +237,7 @@ public class Main extends AppCompatActivity {
 
         music.pause();
     }
-
+*/
     //disable return button
     @Override
     public boolean dispatchKeyEvent(KeyEvent event){
