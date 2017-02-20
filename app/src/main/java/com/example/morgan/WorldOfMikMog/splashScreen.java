@@ -33,9 +33,25 @@ public class splashScreen extends AppCompatActivity {
     }
 
     public void startGame(View view){
+        sound.stop();
         sound.reset();
         sound.release();
         startActivity(new Intent(getApplicationContext(),Main.class));
+    }
+    // This method executes when the player quits the game
+    protected void onResume() {
+        super.onResume();
+
+        sound.start();
+
+    }
+
+    // This method executes when the player quits the game
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        sound.pause();
     }
     @Override
     public boolean dispatchKeyEvent(KeyEvent event){

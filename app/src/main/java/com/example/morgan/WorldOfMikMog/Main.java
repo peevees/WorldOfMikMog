@@ -221,6 +221,21 @@ public class Main extends AppCompatActivity {
         };
 
     }//TODO check player against objects
+    // This method executes when the player quits the game
+    protected void onResume() {
+        super.onResume();
+
+        music.start();
+
+    }
+
+    // This method executes when the player quits the game
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        music.pause();
+    }
 
     //disable return button
     @Override
