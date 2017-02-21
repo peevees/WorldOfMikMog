@@ -59,7 +59,7 @@ public class Main extends AppCompatActivity {
         //music & sound
         sound = new SoundPlayer(this);
         music = new MediaPlayer();
-        music = MediaPlayer.create(this, R.raw.forest);//TODO change sound depending on location
+        music = MediaPlayer.create(this, R.raw.forest);
         music.setVolume(0.2f, 0.2f);
         music.start();
         music.setLooping(true);
@@ -220,9 +220,9 @@ public class Main extends AppCompatActivity {
                 {'G', 'G', 'G', 'G', 'T', 'T', 'T', 'G', 'G', 'G', 'G', 'G', 'G', 'S', 'S', 'S'}
         };
 
-    }//TODO check player against objects
+    }//TODO save state when user exits
     /*
-    // This method executes when the player quits the game
+    // This method executes when the player resumes the game
     protected void onResume() {
         super.onResume();
 

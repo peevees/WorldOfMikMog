@@ -41,7 +41,7 @@ public class splashScreen extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),Main.class));
     }
 /*
-    // This method executes when the player quits the game
+    // This method executes when the player resumes the game
     protected void onResume() {
         super.onResume();
 

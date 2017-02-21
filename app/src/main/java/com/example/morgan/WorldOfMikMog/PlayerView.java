@@ -68,7 +68,7 @@ public class PlayerView extends ImageView {
                         playerY = player.getY();
                     }
                     Log.d("POS_AFTER_MOVEMENT", "UP move playerY: " + playerY + " playerPosY: " + playerPosY);
-                    /*
+                    /* detects if players goes outside screen
                     if(playerY - playerHeight >= 0) {
                         player.setY(playerY - playerHeight);
                         playerY = player.getY();
@@ -81,7 +81,7 @@ public class PlayerView extends ImageView {
                         playerY = player.getY();
                     }
                     Log.d("POS_AFTER_MOVEMENT", "DOWN move playerY: " + playerY + " playerPosY: " + playerPosY);
-                    /*
+                    /* detects if players goes outside screen
                     if(playerY + playerHeight < screenHeight - playerHeight) {
                         player.setY(playerY + playerHeight);
                         playerY = player.getY();
@@ -95,7 +95,7 @@ public class PlayerView extends ImageView {
 
                     }
                     Log.d("POS_AFTER_MOVEMENT", "LEFT move playerX: " + playerX + " playerPosX: " + playerPosX);
-                    /*
+                    /* detects if players goes outside screen
                     if(playerX - playerWidth <= 0) {
                         player.setX(playerX - playerWidth);
                         playerX = player.getX();
@@ -108,7 +108,7 @@ public class PlayerView extends ImageView {
                         playerX = player.getX();
                     }
                     Log.d("POS_AFTER_MOVEMENT", "RIGHT move playerX: " + playerX + " playerPosX: " + playerPosX);
-                    /*
+                    /* detects if players goes outside screen
                     if(playerX + playerWidth < screenWidth - playerWidth) {
                         player.setX(playerX + playerWidth);
                         playerX = player.getX();

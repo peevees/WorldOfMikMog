@@ -36,7 +36,7 @@ public class SoundPlayer {
             soundPool = new SoundPool(SOUND_POOL_MAX, AudioManager.STREAM_MUSIC, 0);
         }
         mediaPlayer = MediaPlayer.create(context, R.raw.tes4title);
-        //TODO new sounds needed
+        //TODO new sound effects needed and add so that they are used
         /*
         splashSound = soundPool.load(context, R.raw.tes4title, 1);
         hitSound = soundPool.load(context, R.raw.success, 2);
