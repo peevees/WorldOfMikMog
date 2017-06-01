@@ -41,7 +41,22 @@ public class GameOver extends AppCompatActivity{
         sound.stop();
         sound.release();
     }
+    /*
+    // This method executes when the player resumes the game
+    protected void onResume() {
+        super.onResume();
 
+        sound.start();
+
+    }
+    // This method executes when the player quits the game
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        sound.pause();
+    }
+    */
     //disable return button
     @Override
     public boolean dispatchKeyEvent(KeyEvent event){
